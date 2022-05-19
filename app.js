@@ -2,6 +2,7 @@
 
 const hostname = '127.0.0.1';
 const port = 3000;
+const path = require('path');
 var file1 = require('./myfirstmodule');
 
 const express = require('express') //================================================================ Creating http server with Expressjs
@@ -20,6 +21,11 @@ var newuser = {
 express_application.get('/', (req, res) => {
     res.send('Hello World!')
 })
+
+// sendFile will go here
+express_application.get('/html', function(req, res) {
+    res.sendFile(path.join(__dirname, '/index.html'));
+  });
 
 //Router to get list of our users
 express_application.get('/listUsers', (req, res) => {
